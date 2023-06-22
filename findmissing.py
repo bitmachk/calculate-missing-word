@@ -2,11 +2,11 @@
 seed_phrase = input("Please input your seed in words (separate by spaces) and leave ? as the missing word: ").lower()
 
 seed_phrase = seed_phrase.split(" ")
-
+    if len(seed_phrase) not in [12, 15, 18, 21, 24]:
+        print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for missing word(s).")
+        raise SystemExit(0)
 english = open("english.txt")
-
 word_list = english.read().split("\n")
-
 english.close()
 
 seed_phrase_index = [word_list.index(word) if word != "?" else word for word in seed_phrase]
@@ -19,19 +19,13 @@ possible_word_bits = [bin(x)[2:].rjust(11, "0") for x in range(2**11)]
 
 #check if there is a last word and saves information in variables depending on if there is a last word or not
 if seed_phrase_binary[-1] == "?": #if the last word is missing, do this
-    
     missing_bits_possible = [bin(x)[2:].rjust(num_missing_bits, "0") for x in range(2**num_missing_bits)]
-
     checksum = ""
-
     entropy_less_missing_bits_possible =  ["".join(seed_phrase_binary[:-1])]
 
 else: #if the last word is not missing, do this
-
     missing_bits_possible = [seed_phrase_binary[-1][0:num_missing_bits]]
-    
     checksum = seed_phrase_binary[-1][-(11-num_missing_bits):]
-
     entropy_less_missing_bits_possible = ["".join(word if word != "?" else word_bit for word in seed_phrase_binary[:-1]) for word_bit in possible_word_bits]
 
 entropy_possible = [bit_combination + missing_bits for missing_bits in missing_bits_possible for bit_combination in entropy_less_missing_bits_possible]
