@@ -3,7 +3,7 @@ seed_phrase = input("Please input your seed in words (separate by spaces) and le
 
 seed_phrase = seed_phrase.split(" ")
     if len(seed_phrase) not in [12, 15, 18, 21, 24]:
-        print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for missing word(s).")
+        print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for the missing word.")
         raise SystemExit(0)
 english = open("english.txt")
 word_list = english.read().split("\n")
