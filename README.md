@@ -7,7 +7,7 @@ The code performs a series of operations on a user-provided seed phrase. It atte
 
 **User Input**: The user is prompted to input a seed phrase, where the missing word is represented by a question mark (?). The input is converted to lowercase and stored in the variable `seed_phrase`.
 ```
-seed_phrase = input("Please input your seed in words (separate by spaces) and leave ? as the missing word(s): ").lower()
+seed_phrase = input("Please input your seed in words (separate by spaces) and leave ? as the missing word: ").lower()
 ```
 
 **Splitting the Seed Phrase**: The `seed_phrase` is split into individual words using the `split(" ")` function, and the resulting list is stored back in `seed_phrase`.
@@ -18,7 +18,7 @@ seed_phrase = seed_phrase.split(" ")
 **Possible seed phrase combination***: Check if 12, 15, 18, 21 or 24-word seed phrase combination as input or not
 ```
     if len(seed_phrase) not in [12, 15, 18, 21, 24]:
-        print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for missing word(s).")
+        print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for the missing word.")
         raise SystemExit(0)
 ```
 
