@@ -15,7 +15,7 @@ seed_phrase = input("Please input your seed in words (separate by spaces) and le
 seed_phrase = seed_phrase.split(" ")
 ```
 
-**Possible seed phrase combination***: Check if 12, 15, 18, 21 or 24-word seed phrase combination as input or not
+**Possible seed phrase combination**: Check if 12, 15, 18, 21 or 24-word seed phrase combination as input or not
 ```
 if len(seed_phrase) not in [12, 15, 18, 21, 24]:
     print("Input seed phrase must be 12, 15, 18, 21, or 24 words. Please leave ? for the missing word.")
